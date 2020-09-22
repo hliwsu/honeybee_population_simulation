@@ -11,7 +11,9 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from datetime import datetime
+starting_clock = datetime.now()
+print(starting_clock)
 # =============================================================================
 # obtain file names for the historical models
 # =============================================================================
@@ -251,5 +253,8 @@ def sgl_fl_mlt_var_plots(hist, csd, cnty, var0, start,end, rcp=[],ftr_mdl=[],var
 var_list,x,dl=sgl_fl_mlt_var_plots(hist=1,csd=2, cnty=2, var0="Adult Workers",start='01/02/1979', end='01/02/1985', var1="Colony Size", var2="Foragers Killed By Pesticides")
 # a sample of future data
 var_list,x,dl=sgl_fl_mlt_var_plots(hist=0,csd=2, cnty=2, var0="Adult Workers",start='01/02/2079', end='01/02/2085', rcp=0,ftr_mdl=2,var1="Colony Size", var2="Foragers Killed By Pesticides")
+ending_clock = datetime.now()
+print(ending_clock-starting_clock)
+# i5-3619qm 12GB 0:00:20.919055
 
 
