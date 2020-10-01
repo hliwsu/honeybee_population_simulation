@@ -16,39 +16,47 @@ from varname import nameof
 import simplejson
 starting_clock = datetime.now()
 print(starting_clock)
-var_na = ["Date", "Colony Size", "Adult Drones", "Adult Workers", "Foragers", "Active Foragers", "Drone Brood", "Worker Brood",             "Drone Larvae", "Worker Larvae", "Drone Eggs", "Worker Eggs", "Total Eggs", "DD", "L", "N", "P", "dd",                "l", "n", "Free Mites", "Drone Brood Mites", "Worker Brood Mites", "Mites/Drone Cell", "Mites/Worker Cell", "Mites ying", "Proportion Mites Dying",                "Colony Pollen (g)", "Pollen Pesticide Concentration", "Colony Nectar", "Nectar Pesticide Concentration",                "Dead Drone Larvae", "Dead Worker Larvae", "Dead Drone Adults", "Dead Worker Adults", "Dead Foragers",                "Queen Strength", "Average Temperature (celsius)", "Rain", "Min Temp", "Max Temp", "Daylight hours", "Forage Inc", "Forage Day",                "New Worker Eggs", "New Drone Eggs", "Worker Eggs To Larvae", "Drone Eggs To Larvae", "Worker Larvae To Brood", "Drone Larvae To Brood", "Worker Brood To Adult", "Drone Brood To Adult",                 "Drone Adults Dying", "Foragers Killed By Pesticides", "Worker Adult To Foragers", "Winter Mortality Foragers Loss", "Foragers Dying"]
-future_model_list=["BNU-ESM","CCSM4","CNRM-CM5","CSIRO-Mk3-6-0","CanESM2","GFDL-ESM2G","GFDL-ESM2M","HadGEM2-CC365","HadGEM2-ES365","IPSL-CM5A-LR","IPSL-CM5A-MR","IPSL-CM5B-LR","MIROC-ESM-CHEM","MIROC5","MRI-CGCM3","NorESM1-M","bcc-csm1-1-m","bcc-csm1-1","inmcm4"]
-cold_storage_period_list=["09-15_02-15","09-15_02-22","09-15_02-29","09-15_03-01","09-15_03-08","09-15_03-15","09-22_02-15","09-22_02-22","09-22_02-29","09-22_03-01","09-22_03-08","09-22_03-15","09-29_02-15","09-29_02-22","09-29_02-29","09-29_03-01","09-29_03-08","09-29_03-15","10-06_02-15","10-06_02-22","10-06_02-29","10-06_03-01","10-06_03-08","10-06_03-15","10-13_02-15","10-13_02-22","10-13_02-29","10-13_03-01","10-13_03-08","10-13_03-15","10-20_02-15","10-20_02-22","10-20_02-29","10-20_03-01","10-20_03-08","10-20_03-15","no cold storage"]
-county_list=["Omak",'Richland','Walla Walla','Wenatchee']
-rcp_list=["rcp45","rcp85"]
-endash='_cold_storage_'
-suffix='.txt'
-fixed_hist_path='D:/Honeybee/data/historical/cold-storage-simulations-observed/'
-fixed_future_path='D:/Honeybee/data/future/cold-storage-results/'
+var_na = ["Date", "Colony Size", "Adult Drones", "Adult Workers", "Foragers", "Active Foragers", "Drone Brood", "Worker Brood",             "Drone Larvae", "Worker Larvae", "Drone Eggs", "Worker Eggs", "Total Eggs", "DD", "L", "N", "P", "dd",                "l", "n", "Free Mites", "Drone Brood Mites", "Worker Brood Mites", "Mites/Drone Cell", "Mites/Worker Cell", "Mites ying", "Proportion Mites Dying",
+          "Colony Pollen (g)", "Pollen Pesticide Concentration", "Colony Nectar", "Nectar Pesticide Concentration",                "Dead Drone Larvae", "Dead Worker Larvae", "Dead Drone Adults", "Dead Worker Adults", "Dead Foragers",                "Queen Strength", "Average Temperature (celsius)", "Rain", "Min Temp", "Max Temp", "Daylight hours", "Forage Inc", "Forage Day",                "New Worker Eggs", "New Drone Eggs", "Worker Eggs To Larvae", "Drone Eggs To Larvae", "Worker Larvae To Brood", "Drone Larvae To Brood", "Worker Brood To Adult", "Drone Brood To Adult",                 "Drone Adults Dying", "Foragers Killed By Pesticides", "Worker Adult To Foragers", "Winter Mortality Foragers Loss", "Foragers Dying"]
+future_model_list = ["BNU-ESM", "CCSM4", "CNRM-CM5", "CSIRO-Mk3-6-0", "CanESM2", "GFDL-ESM2G", "GFDL-ESM2M", "HadGEM2-CC365", "HadGEM2-ES365",
+                     "IPSL-CM5A-LR", "IPSL-CM5A-MR", "IPSL-CM5B-LR", "MIROC-ESM-CHEM", "MIROC5", "MRI-CGCM3", "NorESM1-M", "bcc-csm1-1-m", "bcc-csm1-1", "inmcm4"]
+cold_storage_period_list = ["09-15_02-15", "09-15_02-22", "09-15_02-29", "09-15_03-01", "09-15_03-08", "09-15_03-15", "09-22_02-15", "09-22_02-22", "09-22_02-29", "09-22_03-01", "09-22_03-08", "09-22_03-15", "09-29_02-15", "09-29_02-22", "09-29_02-29", "09-29_03-01", "09-29_03-08", "09-29_03-15",
+                            "10-06_02-15", "10-06_02-22", "10-06_02-29", "10-06_03-01", "10-06_03-08", "10-06_03-15", "10-13_02-15", "10-13_02-22", "10-13_02-29", "10-13_03-01", "10-13_03-08", "10-13_03-15", "10-20_02-15", "10-20_02-22", "10-20_02-29", "10-20_03-01", "10-20_03-08", "10-20_03-15", "no cold storage"]
+county_list = ["Omak", 'Richland', 'Walla Walla', 'Wenatchee']
+rcp_list = ["rcp45", "rcp85"]
+endash = '_cold_storage_'
+suffix = '.txt'
+fixed_hist_path = 'D:/Honeybee/data/historical/cold-storage-simulations-observed/'
+fixed_future_path = 'D:/Honeybee/data/future/cold-storage-results/'
 # =============================================================================
 # file path module
 # =============================================================================
 # historical file path
 def hist_path(cnty, csd_h):
-    if csd_h==36:
-        hist_fl_path=fixed_hist_path+county_list[cnty]+'/observed/historical_default.txt'
+    if csd_h == 36:
+        hist_fl_path = fixed_hist_path + \
+            county_list[cnty]+'/observed/historical_default.txt'
     else:
-        hist_fl_path=fixed_hist_path+county_list[cnty]+'/observed/historical_cold_storage_'+cold_storage_period_list[csd_h]+suffix
+        hist_fl_path = fixed_hist_path + \
+            county_list[cnty]+'/observed/historical_cold_storage_' + \
+            cold_storage_period_list[csd_h]+suffix
     return(hist_fl_path)
-# Walla Walla, 10-13_03-08
-# hist_path(2,36)
 # future file path
 def ftr_path(rcp, ftr_mdl, cnty, csd_f):
-    if csd_f==36:
-        ftr_fl_path=fixed_future_path+county_list[cnty]+'/'+rcp_list[rcp]+'/'+future_model_list[ftr_mdl]+'_default.txt'
+    if csd_f == 36:
+        ftr_fl_path = fixed_future_path + \
+            county_list[cnty]+'/'+rcp_list[rcp]+'/' + \
+            future_model_list[ftr_mdl]+'_default.txt'
     else:
-        ftr_fl_path=fixed_future_path+county_list[cnty]+'/'+rcp_list[rcp]+'/'+future_model_list[ftr_mdl]+endash+cold_storage_period_list[csd_f]+suffix
+        ftr_fl_path = fixed_future_path+county_list[cnty]+'/'+rcp_list[rcp]+'/' + \
+            future_model_list[ftr_mdl]+endash + \
+            cold_storage_period_list[csd_f]+suffix
     return(ftr_fl_path)
 # =============================================================================
 # Variable option module
 # =============================================================================
-def arg_check(v1,v2,v3,v4,v5,v6,v7):
-    arg_list=[]
+def arg_check(v1, v2, v3, v4, v5, v6, v7):
+    arg_list = []
     if v1:
         arg_list.append(v1)
     if v2:
@@ -56,7 +64,7 @@ def arg_check(v1,v2,v3,v4,v5,v6,v7):
     if v3:
         arg_list.append(v3)
     if v4:
-        arg_list.append(v4)   
+        arg_list.append(v4)
     if v5:
         arg_list.append(v5)
     if v6:
@@ -67,99 +75,108 @@ def arg_check(v1,v2,v3,v4,v5,v6,v7):
 # =============================================================================
 # Data reading module
 # =============================================================================
-def data_reading(path,var0, var1=[], var2=[], var3=[], var4=[], var5=[], var6=[], var7=[]):
-    var_list=arg_check(var1, var2, var3, var4, var5,var6,var7)
-    var_list.insert(0,var0)
-    var_all=arg_check(var1, var2, var3, var4, var5,var6,var7)
-    var_all.insert(0,var0)
-    var_all.insert(0,'Date')
-    data = pd.read_csv(path, delim_whitespace=True, header=None, names=var_na, skiprows=6)
-    data_df=data[var_all]
-    return(var_list,var_all, data_df)
+def data_reading(path, var0, var1=[], var2=[], var3=[], var4=[], var5=[], var6=[], var7=[]):
+    var_list = arg_check(var1, var2, var3, var4, var5, var6, var7)
+    var_list.insert(0, var0)
+    var_all = arg_check(var1, var2, var3, var4, var5, var6, var7)
+    var_all.insert(0, var0)
+    var_all.insert(0, 'Date')
+    data = pd.read_csv(path, delim_whitespace=True,
+                       header=None, names=var_na, skiprows=6)
+    data_df = data[var_all]
+    return(var_list, var_all, data_df)
 # =============================================================================
 # Difference in difference (DiD) data preparation
 # =============================================================================
-format='%m/%d/%Y'
-def did_prep(treatment_cnty, control_cnty, rcp, ftr_mdl, did_var,csd_h,csd_f):
-    hist_tr_path=hist_path(treatment_cnty, 36)
-    hist_ct_path=hist_path(control_cnty, 36)
-    ftr_tr_path=ftr_path(rcp, ftr_mdl, treatment_cnty, csd_f=csd_f)
-    ftr_ct_path=ftr_path(rcp, ftr_mdl, control_cnty, csd_f=36) # yes, use csd_f=36
-    fl_phs=[ hist_tr_path , hist_ct_path , ftr_tr_path , ftr_ct_path ] 
-    [print(fl_phs[i]) for i in range(0,4)]
-    fl_names=['h_t', 'h_c','f_t','f_c']
-    for i in range(0,4):
-        locals()[fl_names[i]]=data_reading(fl_phs[i],did_var)[2]  
-        if i in (0,1):
-            locals()[fl_names[i]]['Date'][0]='12/31/1978'
+format = '%m/%d/%Y'
+def did_prep(treatment_cnty, control_cnty, rcp, ftr_mdl, did_var, csd_h, csd_f):
+    hist_tr_path = hist_path(treatment_cnty, 36)
+    hist_ct_path = hist_path(control_cnty, 36)
+    ftr_tr_path = ftr_path(rcp, ftr_mdl, treatment_cnty, csd_f=csd_f)
+    ftr_ct_path = ftr_path(rcp, ftr_mdl, control_cnty,
+                           csd_f=36)  # yes, use csd_f=36
+    fl_phs = [hist_tr_path, hist_ct_path, ftr_tr_path, ftr_ct_path]
+    [print(fl_phs[i]) for i in range(0, 4)]
+    fl_names = ['h_t', 'h_c', 'f_t', 'f_c']
+    for i in range(0, 4):
+        locals()[fl_names[i]] = data_reading(fl_phs[i], did_var)[2]
+        if i in (0, 1):
+            locals()[fl_names[i]]['Date'][0] = '12/31/1978'
         else:
-            locals()[fl_names[i]]['Date'][0]='12/31/2005'
-        locals()[fl_names[i]]['Date']=pd.to_datetime(locals()[fl_names[i]]['Date'], format=format)
-        locals()[fl_names[i]]=locals()[fl_names[i]].set_index(pd.DatetimeIndex(locals()[fl_names[i]]['Date']))
-    return(locals()[fl_names[0]],locals()[fl_names[1]],locals()[fl_names[2]],locals()[fl_names[3]], did_var)
-# h_t, h_c, f_t, f_c, did_var=did_prep(2,1,1, 2,'Foragers',36,2)
+            locals()[fl_names[i]]['Date'][0] = '12/31/2005'
+        locals()[fl_names[i]]['Date'] = pd.to_datetime(
+            locals()[fl_names[i]]['Date'], format=format)
+        locals()[fl_names[i]] = locals()[fl_names[i]].set_index(
+            pd.DatetimeIndex(locals()[fl_names[i]]['Date']))
+    return(locals()[fl_names[0]], locals()[fl_names[1]], locals()[fl_names[2]], locals()[fl_names[3]], did_var)
 # =============================================================================
 # DiD calculation modules
 # =============================================================================
-# Did on lowest values
+# DiD on lowest values
 def m1_lowest(h_t, h_c, f_t, f_c, did_var):
-    h_t_min=h_t[did_var].min()
-    h_c_min=h_c[did_var].min()
-    f_t_min=f_t[did_var].min()
-    f_c_min=f_c[did_var].min()
-    cell_1_3=(f_t_min-h_t_min)
-    cell_2_3=(f_c_min-h_c_min)
-    cell_3_3= cell_1_3-cell_2_3
-    title='Lowest values'
-    did_results={'cell_1_1':h_t_min,'cell_2_1':h_c_min,'cell_1_2':f_t_min,'cell_2_2':f_c_min,'cell_1_3':cell_1_3,'cell_2_3':cell_2_3,'cell_3_3':cell_3_3, 'title': title}
+    h_t_min = h_t[did_var].min()
+    h_c_min = h_c[did_var].min()
+    f_t_min = f_t[did_var].min()
+    f_c_min = f_c[did_var].min()
+    cell_1_3 = (f_t_min-h_t_min)
+    cell_2_3 = (f_c_min-h_c_min)
+    cell_3_3 = cell_1_3-cell_2_3
+    title = 'Lowest values'
+    did_results = {'cell_1_1': h_t_min, 'cell_2_1': h_c_min, 'cell_1_2': f_t_min, 'cell_2_2': f_c_min,
+                   'cell_1_3': cell_1_3, 'cell_2_3': cell_2_3, 'cell_3_3': cell_3_3, 'title': title}
     return(did_results)
-# Did on mean values
+# DiD on mean values
 def m2_mean(h_t, h_c, f_t, f_c, did_var):
-    h_t_m2=h_t[did_var].mean()
-    h_c_m2=h_c[did_var].mean()
-    f_t_m2=f_t[did_var].mean()
-    f_c_m2=f_c[did_var].mean()
-    cell_1_3=(f_t_m2-h_t_m2)
-    cell_2_3=(f_c_m2-h_c_m2)
-    cell_3_3= cell_1_3-cell_2_3
-    title='Mean values'
-    did_results={'cell_1_1':h_t_m2,'cell_2_1':h_c_m2,'cell_1_2':f_t_m2,'cell_2_2':f_c_m2,'cell_1_3':cell_1_3,'cell_2_3':cell_2_3,'cell_3_3':cell_3_3,'title': title}
+    h_t_m2 = h_t[did_var].mean()
+    h_c_m2 = h_c[did_var].mean()
+    f_t_m2 = f_t[did_var].mean()
+    f_c_m2 = f_c[did_var].mean()
+    cell_1_3 = (f_t_m2-h_t_m2)
+    cell_2_3 = (f_c_m2-h_c_m2)
+    cell_3_3 = cell_1_3-cell_2_3
+    title = 'Mean values'
+    did_results = {'cell_1_1': h_t_m2, 'cell_2_1': h_c_m2, 'cell_1_2': f_t_m2, 'cell_2_2': f_c_m2,
+                   'cell_1_3': cell_1_3, 'cell_2_3': cell_2_3, 'cell_3_3': cell_3_3, 'title': title}
     return(did_results)
 # =============================================================================
-# Full DiD process 
+# Full DiD process
 # =============================================================================
-def did(treatment_cnty, control_cnty, rcp, ftr_mdl,csd_f,csd_h, did_var, mode=[], hist_stt=[], hist_end=[], ftr_stt=[], ftr_end=[]): # treatment/control: source data; did_var: interested variable for DiD procedure;
-    h_t, h_c, f_t, f_c, did_var=did_prep(treatment_cnty, control_cnty, rcp, ftr_mdl, did_var,csd_h=36, csd_f=csd_f)
-    if  not mode or mode==0:
-        did_results=m2_mean(h_t, h_c, f_t, f_c, did_var)
+# treatment/control: source data; did_var: interested variable for DiD procedure;
+def did(treatment_cnty, control_cnty, rcp, ftr_mdl, csd_f, csd_h, did_var, mode=[], hist_stt=[], hist_end=[], ftr_stt=[], ftr_end=[]):
+    h_t, h_c, f_t, f_c, did_var = did_prep(
+        treatment_cnty, control_cnty, rcp, ftr_mdl, did_var, csd_h=36, csd_f=csd_f)
+    if not mode or mode == 0:
+        did_results = m2_mean(h_t, h_c, f_t, f_c, did_var)
     else:
-        did_results=m1_lowest(h_t, h_c, f_t, f_c, did_var)
+        did_results = m1_lowest(h_t, h_c, f_t, f_c, did_var)
     return(did_results)
 # =============================================================================
 # A full loop
 # =============================================================================
-ftr_append=[]
-csd_append=[]
-rcp_append=[]
-cell_1_3_append=[]
-cell_2_3_append=[]
-cell_3_3_append=[]
-for x in range(0,len(future_model_list)):
-    ftr_mdl_na=future_model_list[x]
-    for y in range(0,len(rcp_list)):
-        rcp_na=rcp_list[y]
+ftr_append = []
+csd_append = []
+rcp_append = []
+cell_1_3_append = []
+cell_2_3_append = []
+cell_3_3_append = []
+for x in range(0, len(future_model_list)):
+    ftr_mdl_na = future_model_list[x]
+    for y in range(0, len(rcp_list)):
+        rcp_na = rcp_list[y]
         for z in range(0, (len(cold_storage_period_list))):
-            csd_na=cold_storage_period_list[z]
-            did_re_temp=did(2, 1, y, x, z,36,"Foragers")
+            csd_na = cold_storage_period_list[z]
+            did_re_temp = did(2, 1, y, x, z, 36, "Foragers")
             ftr_append.append(future_model_list[x])
             csd_append.append(cold_storage_period_list[z])
             rcp_append.append(rcp_list[y])
             cell_1_3_append.append(did_re_temp['cell_1_3'])
             cell_2_3_append.append(did_re_temp['cell_2_3'])
             cell_3_3_append.append(did_re_temp['cell_3_3'])
-            print(future_model_list[x],rcp_list[y],cold_storage_period_list[z])
-d={'future model':ftr_append, 'cold storage periods':csd_append, 'rcp': rcp_append, 'treatment: after - before': cell_1_3_append, 'control: after - before': cell_2_3_append, 'DiD result': cell_3_3_append}
-df=pd.DataFrame(d)
+            print(future_model_list[x], rcp_list[y],
+                  cold_storage_period_list[z])
+d = {'future model': ftr_append, 'cold storage periods': csd_append, 'rcp': rcp_append,
+     'treatment: after - before': cell_1_3_append, 'control: after - before': cell_2_3_append, 'DiD result': cell_3_3_append}
+df = pd.DataFrame(d)
 df.to_excel('DiD.xlsx')
 ending_clock = datetime.now()
 print(ending_clock-starting_clock)
@@ -173,7 +190,7 @@ print(ending_clock-starting_clock)
 # =============================================================================
 #
 # 2 X 2 difference in difference
-# 
+#
 #             before | after       |  after-before
 # treatment          |             |
 # -------------------|-------------|------------
@@ -185,7 +202,7 @@ print(ending_clock-starting_clock)
 # =============================================================================
 # available models and codes
 # BNU-ESM: 0
-# CCSM4: 1 
+# CCSM4: 1
 # CNRM-CM5: 2
 # CSIRO-Mk3-6-0: 3
 # CanESM2: 4
@@ -251,33 +268,25 @@ print(ending_clock-starting_clock)
 # ftr_output= open('ftr_output.txt', 'w')
 # simplejson.dump( ftr_append, ftr_output)
 # ftr_output.close()
-# 
+#
 # csd_output= open('csd_output.txt', 'w')
 # simplejson.dump( ftr_append, csd_output)
 # csd_output.close()
-# 
+#
 # rcp_output= open('rcp_output.txt', 'w')
 # simplejson.dump( rcp_append, rcp_output)
 # rcp_output.close()
-# 
+#
 # cell_1_3_output= open('cell_1_3_output.txt', 'w')
 # simplejson.dump( cell_1_3_append, cell_1_3_output)
 # cell_1_3_output.close()
-# 
+#
 # cell_2_3_output= open('cell_2_3_output.txt', 'w')
 # simplejson.dump( cell_2_3_append, cell_2_3_output)
 # cell_2_3_output.close()
-# 
+#
 # cell_3_3_output= open('cell_3_3_output.txt', 'w')
 # simplejson.dump( cell_3_3_append, cell_3_3_output)
 # cell_3_3_output.close()
-# 
+#
 # =============================================================================
-
-
-
-
-
-
-
-
