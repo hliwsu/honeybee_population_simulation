@@ -6,7 +6,6 @@ Created on Mon Sep 28 23:24:48 2020
 
 state 2, second revision
 """
-
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -45,8 +44,6 @@ def ftr_path(rcp, ftr_mdl, cnty, csd_f):
     else:
         ftr_fl_path=fixed_future_path+county_list[cnty]+'/'+rcp_list[rcp]+'/'+future_model_list[ftr_mdl]+endash+cold_storage_period_list[csd_f]+suffix
     return(ftr_fl_path)
-
-
 # =============================================================================
 # Variable option module
 # =============================================================================
@@ -79,7 +76,6 @@ def data_reading(path,var0, var1=[], var2=[], var3=[], var4=[], var5=[], var6=[]
     data = pd.read_csv(path, delim_whitespace=True, header=None, names=var_na, skiprows=6)
     data_df=data[var_all]
     return(var_list,var_all, data_df)
-
 # =============================================================================
 # Difference in difference (DiD) data preparation
 # =============================================================================
@@ -101,7 +97,6 @@ def did_prep(treatment_cnty, control_cnty, rcp, ftr_mdl, did_var,csd_h,csd_f):
         locals()[fl_names[i]]['Date']=pd.to_datetime(locals()[fl_names[i]]['Date'], format=format)
         locals()[fl_names[i]]=locals()[fl_names[i]].set_index(pd.DatetimeIndex(locals()[fl_names[i]]['Date']))
     return(locals()[fl_names[0]],locals()[fl_names[1]],locals()[fl_names[2]],locals()[fl_names[3]], did_var)
-
 # h_t, h_c, f_t, f_c, did_var=did_prep(2,1,1, 2,'Foragers',36,2)
 # =============================================================================
 # DiD calculation modules
@@ -168,7 +163,6 @@ df=pd.DataFrame(d)
 df.to_excel('DiD.xlsx')
 ending_clock = datetime.now()
 print(ending_clock-starting_clock)
-
 # R7-3700x, 32GB, 0:54:07.689136
 # Kamiak, 1 node, 56GB, 0:22:17.262247
 
